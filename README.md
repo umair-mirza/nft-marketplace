@@ -1,13 +1,9 @@
-# Sample Hardhat Project
+# NFT Marketplace deployed on Polygon Testnet
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project is based on an NFT marketplace that has been tested on Local hardhat network as well as Polygon Testnet.
 
-Try running some of the following tasks:
+Following libraries have been used to build it:
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+* Hardhat
+* Ethers.js
+* NextJS
