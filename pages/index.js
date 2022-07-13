@@ -18,12 +18,12 @@ export default function Home() {
   }, [])
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    // const provider = new ethers.providers.JsonRpcProvider()
+    // const provider = new ethers.providers.JsonRpcProvider(process.env.MUMBAI_TESTNET_RPC_URL)
     let provider
     if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'local') {
       provider = new ethers.providers.JsonRpcProvider()
     } else if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'testnet') {
-      provider = new ethers.providers.JsonRpcProvider(process.env.MUMBAI_TESTNET_RPC_URL)
+      provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com/v1/b4dc3bcd0807f5e1c93e3965e055352729e19e96")
     } else {
       provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
     }
