@@ -116,3 +116,11 @@ To check network details:
 polygon
 --------------------------------------
 
+After coding the whole application, it's time to run and test it on localhost and then on Testnet:
+
+To start the local hardhat blockchain:
+
+npx hardhat node
+
+Now, deploy the contract on the localhost:
+
