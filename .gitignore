@@ -55,3 +55,6 @@ typechain-types
 cache
 artifacts
 
+#notepad files
+notes.txt
+

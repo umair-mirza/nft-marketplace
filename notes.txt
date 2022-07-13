@@ -124,3 +124,12 @@ npx hardhat node
 
 Now, deploy the contract on the localhost:
 
+npx hardhat run scripts/deploy.js --network localhost
+
+----------------------------------------------------------
+
+To deploy to mumbai testnet
+
+npx hardhat run scripts/deploy.js --network mumbai
+
+------------------------------------------------------------
