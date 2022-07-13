@@ -16,6 +16,59 @@ npx hardhat
 
 yarn add --dev "hardhat@^2.9.9" "@nomicfoundation/hardhat-toolbox@^1.0.1" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-chai-matchers@^1.0.0" "@nomiclabs/hardhat-ethers@^2.0.0" "@nomiclabs/hardhat-etherscan@^3.0.0" "chai@^4.2.0" "ethers@^5.4.7" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.7.21" "@typechain/hardhat@^6.1.2" "typechain@^8.1.0" "@typechain/ethers-v5@^10.1.0" "@ethersproject/abi@^5.4.7" "@ethersproject/providers@^5.4.7"
 
+npm install @nomiclabs/hardhat-waffle web3modal @openzeppelin/contracts ipfs-http-client axios
+
+Next install tailwind css
+
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+Next, we will create the configuration files needed for Tailwind to work with Next.js (tailwind.config.js and postcss.config.js) by running the following command:
+
+npx tailwindcss init -p
+
+Next, configure your template content paths in tailwind.config.js:
+
+content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+
+Finally, delete the code in styles/globals.css and update it with the following:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+----------------------------------------------------------
+
+Next, update the configuration at hardhat.config.js with the following:
+
+require("@nomiclabs/hardhat-waffle")
+
+module.exports = {
+  defaultNetwork: "hardhat",
+  networks: {
+    hardhat: {
+      chainId: 1337
+    },
+//  unused configuration commented out for now
+//  mumbai: {
+//    url: "https://rpc-mumbai.maticvigil.com",
+//    accounts: [process.env.privateKey]
+//  }
+  },
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  }
+}
+
+-----------------------------------------------
+
 To see the list of tasks available:
 
 npx hardhat
@@ -23,4 +76,43 @@ npx hardhat
 To run a local hardhat blockchain node:
 
 npx hardhat node
+
+Import an account in the metamask wallet (maybe Account 0)\
+
+To start making calls on the local hardhat blockchain, 
+
+npx hardhat console
+
+Whenever we want to execute a command in hardhart environment, we use 'hre'
+
+--------------------------------------
+
+for example:
+
+const hardhat = new ethers.providers.JsonRpcProvider("http://localhost:8545")
+
+hardhat
+
+To get the latest block details:
+
+await hre.ethers.provider.getBlock("latest")
+
+const lastBlock = await hre.ethers.provider.getBlock("latest")
+
+To get the timestamp:
+
+lastBlock.timestamp
+
+To get the gas limit:
+
+lastBlock.gasLimit
+
+To interact with polygon mainnet:
+
+const polygon = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com")
+
+To check network details:
+
+polygon
+--------------------------------------
 
